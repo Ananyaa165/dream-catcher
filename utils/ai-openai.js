@@ -1,7 +1,4 @@
 import OpenAI from 'openai';
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
-});
 
 // Call OpenAI API for dream interpretation
 export async function getDreamInterpretation(dreamText) {
@@ -9,6 +6,9 @@ export async function getDreamInterpretation(dreamText) {
     throw new Error('Server misconfigured: OPENAI_API_KEY is missing');
   }
 
+  const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY
+  });
   const model = process.env.OPENAI_MODEL || 'gpt-4o-mini';
 
   try {
